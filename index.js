@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
@@ -6,8 +7,10 @@ const session = require('express-session');
 
 const app = express();
 
+const MONGODB_URI = process.env.MONGODB_URI;
+
 // Conexión a MongoDB (asegúrate de tener MongoDB en ejecución)
-mongoose.connect('mongodb://localhost:27017');
+mongoose.connect(MONGODB_URI);
 
 // Definir el esquema del usuario
 const userSchema = new mongoose.Schema({

@@ -9,10 +9,10 @@ const app = express();
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// Conexión a MongoDB (asegúrate de tener MongoDB en ejecución)
+// Conexión a MongoDB
 mongoose.connect(MONGODB_URI);
 
-// Definir el esquema del usuario
+// Definir el usuario
 const userSchema = new mongoose.Schema({
   nombre: String,
   apellido: String,
@@ -75,7 +75,7 @@ app.post('/registro', async (req, res) => {
   `);
   }
 
-  // Encriptar la contraseña antes de almacenarla
+  // Encriptar la contraseña
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Crear nuevo usuario
